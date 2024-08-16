@@ -1,0 +1,35 @@
+///https://codeforces.com/problemset/problem/263/A
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+
+    int n,arr[5][5] ,posx,posy,sum= 0;
+    for(int i=0;i<5;i++){
+        for(int j=0;j<5;j++){
+            cin>> arr[i][j];
+            if(arr[i][j] ==1){
+            posx = i;posy = j;
+        }
+        }
+    }
+
+    int x = posx-2, y = posy-2;
+    if(x<0){
+        x*=(-1);
+    }
+    if(y<0){
+        y*=(-1);
+    }
+    sum = x+y;
+    cout<< sum << endl;
+
+
+}
+
+
+
+
+
