@@ -1,0 +1,21 @@
+///https://codeforces.com/problemset/problem/266/A
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n,cnt = 0;
+    cin>> n;
+    char c[n];
+    cin>> c;
+    for(int i=1;i<n;i++){
+        if(c[i] == c[i-1]){
+            cnt++;
+            //c[i] = c[i+1];
+           // i--;
+        }
+
+    }
+    cout<< cnt << endl;
+
+}
