@@ -1,0 +1,22 @@
+///https://codeforces.com/problemset/problem/248/A
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+
+    int d,n,a0=0,a1=0,b0=0,b1=0;
+    int a[10001],b[10001];
+    cin>> n;
+    for(int i= 0;i<n;i++){
+        cin>> a[i]>> b[i];
+        if(a[i] == 0){a0++;}
+        else{a1++;}
+        d= min(a0,a1);
+        if(b[i]== 0){b0++;}
+        else{b1++;}
+        d+=min(b0,b1);
+
+    }
+
+    cout<< d<< endl;
+}
