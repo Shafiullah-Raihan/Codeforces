@@ -1,0 +1,22 @@
+///https://codeforces.com/problemset/problem/118/A
+#include<bits/stdc++.h>
+using namespace std;
+bool isCons(char c){
+ return (c=='a' || c=='o' ||c =='y' || c=='u' || c=='i' || c=='e') ;
+ }
+int main()
+{
+
+    string s,ans;
+    cin>> s;
+    int len = s.size();
+    for(int i=0;i<len;i++){
+        char c = tolower(s[i]);
+
+        if(!isCons(c)){
+            ans += '.';
+            ans += c;
+        }
+    }
+    cout<< ans<< endl;
+}
