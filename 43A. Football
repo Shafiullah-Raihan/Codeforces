@@ -1,0 +1,26 @@
+///https://codeforces.com/problemset/problem/43/A
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+
+    int t,cnt=0;
+    string mx;
+    map<string, int >mp;
+    cin>> t;
+    while(t--){
+        string s;
+        cin>> s;
+
+        mp[s]++;
+    }
+    for(auto u:mp){
+            if(u.second>cnt){
+                cnt = u.second;
+                mx = u.first;
+        }
+    }
+
+
+    cout<< mx<< endl;
+}
