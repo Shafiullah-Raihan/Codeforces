@@ -1,0 +1,22 @@
+///https://codeforces.com/problemset/problem/236/A
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    string s;
+    cin>> s;
+    int cnt = 0;
+    map<char , int > mp;
+    for(char u:s){
+        if(mp[u]==0){
+            cnt++;
+        }
+        mp[u]++;
+    }
+
+    if(cnt%2==0){
+        cout<< "CHAT WITH HER!"<< endl;
+        }
+    else{cout<< "IGNORE HIM!"<< endl;}
+}
