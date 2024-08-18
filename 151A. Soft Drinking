@@ -1,0 +1,14 @@
+///https://codeforces.com/problemset/problem/151/A
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n,k,l,c,d,p,nl,np,drink,lime,salt;
+    cin>> n >> k>> l>> c>> d>> p>> nl>> np;
+
+    drink = (k*l)/nl, lime = c*d, salt = p/np;
+
+    cout<< min({drink,lime,salt})/n << endl;
+
+}
