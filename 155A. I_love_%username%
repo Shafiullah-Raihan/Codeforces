@@ -1,0 +1,23 @@
+///https://codeforces.com/problemset/problem/155/A
+#include<bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+
+int main()
+{
+    int n,cnt=0;
+    cin>> n;
+    int arr[1010] = {0};
+    for(int i=0;i<n;i++){
+        cin>> arr[i];
+
+    }
+    int a = arr[0],b = arr[0];
+     for(int i=1;i<n;i++){
+
+        if(a<arr[i]){a = arr[i];cnt++;}
+        else if(b>arr[i]){b= arr[i] ; cnt++;}
+    }
+
+    cout<< cnt<< endl;
+}
