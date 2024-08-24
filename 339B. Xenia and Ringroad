@@ -1,0 +1,29 @@
+///https://codeforces.com/problemset/problem/339/B
+#include<bits/stdc++.h>
+#define endl "\n";
+#define ll long long
+using namespace std;
+
+int main()
+{
+    int n,m;
+    cin>> n>> m;
+    int current = 1;
+    ll mv = 0;
+    for(int i=0;i<m;i++){
+        int goal;
+        cin>> goal;
+        int p = goal - current;
+        if(p>=0){
+            mv+=p;
+            current = goal;
+        }
+        else{
+            mv+=(n+p);
+            current = goal;
+        }
+    }
+    cout<< mv<< endl;
+
+}
+
