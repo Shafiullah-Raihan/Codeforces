@@ -14,7 +14,7 @@ int main()
         cin >> v[i].first >> v[i].second;
     }
     for(int i=0;i<n;i++){
-         bool tole = false,toup = false,tolow = false,tori = false;
+         bool tole = false,toup = false,tolow = false,tori = false; ///Need to false every time becase if it true in j loop it will always will be true
         for(int j=0;j<n;j++){
                 if(i==j) continue;
             int x1 = v[i].first,y1 = v[i].second;
