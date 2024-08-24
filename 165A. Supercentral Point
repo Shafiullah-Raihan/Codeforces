@@ -1,0 +1,37 @@
+///https://codeforces.com/problemset/problem/165/A
+#include<bits/stdc++.h>
+#define endl "\n";
+#define ll long long
+using namespace std;
+
+int main()
+{
+    int n,cnt=0;
+    cin>> n;
+
+    vector<pair<int,int>>v(n);
+    for (int i = 0; i < n; i++) {
+        cin >> v[i].first >> v[i].second;
+    }
+    for(int i=0;i<n;i++){
+         bool tole = false,toup = false,tolow = false,tori = false;
+        for(int j=0;j<n;j++){
+                if(i==j) continue;
+            int x1 = v[i].first,y1 = v[i].second;
+            int x2 = v[j].first, y2 = v[j].second;
+            if(x2>x1 && y1 == y2)  tori = true;
+            if(x2<x1 && y1 == y2)  tole = true;
+            if(x2==x1 && y1 > y2)  toup = true;
+            if(x2==x1 && y1 < y2)  tolow = true;
+
+        }
+        if(tori && tole && toup && tolow){
+            cnt++;
+        }
+    }
+    cout<< cnt<< endl;
+
+    return 0;
+
+}
+
