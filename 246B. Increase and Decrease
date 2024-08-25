@@ -1,0 +1,27 @@
+///https://codeforces.com/problemset/problem/246/B
+#include<bits/stdc++.h>
+#define endl "\n";
+#define ll long long
+using namespace std;
+
+int main()
+{
+
+    int x = 0,n,a;
+    cin>>n;
+    int p = n;
+    while(p--){
+        cin>>a;
+        x += a;
+    }
+
+    if(x%n == 0){
+        cout<< n<< endl;
+    }
+    else{
+        cout<< n-1<<endl;
+    }
+    return 0;
+
+}
+
