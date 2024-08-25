@@ -1,0 +1,27 @@
+///https://codeforces.com/problemset/problem/282/A
+#include<bits/stdc++.h>
+#define endl "\n";
+#define ll long long
+using namespace std;
+
+int main()
+{
+    string s;
+    int x = 0,n;
+    cin>>n;
+    while(n--){
+        cin>> s;
+        if(s[1]== '+'){
+            x++;
+        }
+        else{
+            x--;
+        }
+    }
+
+
+    cout<< x<<endl;
+    return 0;
+
+}
+
