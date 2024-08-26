@@ -1,0 +1,26 @@
+///https://codeforces.com/gym/105319/problem/B
+
+#include<bits/stdc++.h>
+#define endl "\n";
+#define ll long long
+using namespace std;
+
+int min_operations_to_palindrome(const string &s) {
+    int n = s.length();
+    int operations = 0;
+    for (int i = 0; i < n / 2; i++) {
+        operations += abs(s[i] - s[n - i - 1]);
+    }
+    return operations;
+}
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        string s;
+        cin >> s;
+        cout << min_operations_to_palindrome(s) << endl;
+    }
+    return 0;
+}
