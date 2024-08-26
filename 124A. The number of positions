@@ -7,11 +7,8 @@ using namespace std;
 
 int main()
 {
-    int n,a,b;
-    cin>>n>>a>> b;
-
-    cout<< n-1<<endl;
-
+    int n, a, b;
+    cin >> n >> a >> b;
+    cout << min(n - a, b + 1) << endl;
     return 0;
-
 }
