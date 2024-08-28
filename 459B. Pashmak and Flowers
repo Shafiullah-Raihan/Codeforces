@@ -37,7 +37,7 @@ int main() {
 
     ll sz;
     if(dif == 0) {
-        sz = (ll)n * (n - 1) / 2;
+        sz = (ll)n * (n - 1) / 2;      //if same beauty he can choose this any two flower he wants. So it will be nc2 = (n*(n-1))/2;
     } else {
         sz = (ll)countMin * countMax;
     }
