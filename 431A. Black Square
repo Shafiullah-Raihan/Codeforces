@@ -1,0 +1,23 @@
+///https://codeforces.com/contest/431/problem/A
+
+#include<bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio;cin.tie(0);cout.tie(0);
+
+int main() {
+    optimize();
+    int sum = 0;
+    vector<int> v(4);
+    for(int i=0;i<4;i++) cin>> v[i];
+    string s;
+    cin>> s;
+    int len = s.size();
+    for(int i=0;i<len;i++){
+        int t = s[i]- '0'-1;
+        sum += v[t];
+    }
+    cout<< sum <<endl;
+    return 0;
+}
