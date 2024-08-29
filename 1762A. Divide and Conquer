@@ -1,0 +1,43 @@
+///https://codeforces.com/problemset/problem/1762/A
+#include<bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+int main()
+{
+
+	int t;
+	cin >> t;
+	while(t--){
+		int n;
+		cin >> n;
+		vector<int>a(n);
+		int s = 0;
+		for(int i = 0; i < n; ++i){
+			cin >> a[i];
+			s += a[i];
+		}
+		if(s % 2 == 0) cout << "0" << endl;
+		else{
+			int cnt, mn = 1e6;
+			for(int i = 0; i < n; ++i){
+				cnt = 0;
+				int now = a[i], ss = s - now;
+				while(now){
+					++cnt;
+					now /= 2;
+					if((ss + now) % 2 == 0){
+						ss += now;
+						break;
+					}
+				}
+				if(ss % 2 == 0) mn = min(mn, cnt);
+
+			}
+			cout << mn << endl;
+		}
+	}
+	return 0;
+}
