@@ -1,0 +1,23 @@
+///https://codeforces.com/problemset/problem/214/A
+#include<bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+int main()
+{
+    int m,n,cnt=0;
+    cin>> n>>m;
+    for(int a = 0;(a*a)<=n && a<=m;a++){
+        int b = n - (a*a);
+        if(a+(b*b) == m){
+            cnt++;
+        }
+    }
+    cout<< cnt<<endl;
+
+	return 0;
+}
+
+
