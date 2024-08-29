@@ -1,0 +1,29 @@
+///https://codeforces.com/problemset/problem/149/A
+#include<bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+int main()
+{
+    int n, m = 12,cnt = 0,sum =0;
+    cin>>n;
+    vector<int>arr(m);
+    for(int i=0;i<m;i++) {cin>> arr[i];}
+    sort(arr.rbegin(),arr.rend());
+    if(n==0) {cout<< "0"<<endl; return 0;}
+    for(int i=0;i<m;i++){
+        sum += arr[i];
+        cnt++;
+        if(sum>=n) {
+            cout<< cnt <<endl;
+            return 0;
+        }
+
+
+}
+    cout<< "-1"<<endl;
+    return 0;
+}
+
