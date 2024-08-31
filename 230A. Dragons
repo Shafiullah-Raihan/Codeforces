@@ -1,0 +1,32 @@
+///https://codeforces.com/problemset/problem/230/A
+#include<bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+int main()
+{
+    int n,m;
+    cin>>n>>m;
+    vector<pair<int,int>>v(m);
+    for(int i=0;i<m;i++){
+        cin>>v[i].first>>v[i].second;
+    }
+    sort(v.begin(),v.end());
+    for(int i=0;i<m;i++){
+        if(n<=v[i].first){
+            cout<< "NO"<<endl;
+            return 0;
+        }
+        else{
+            n = n+ v[i].second;
+        }
+    }
+
+    cout<< "YES"<<endl;
+
+    return 0;
+}
+
+
