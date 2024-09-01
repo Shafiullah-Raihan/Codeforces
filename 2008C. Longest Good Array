@@ -1,0 +1,33 @@
+///https://codeforces.com/contest/2008/problem/C
+#include<bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        long long l, r;
+        cin >> l >> r;
+
+
+        long long diff = r - l;
+        long long max_length = (long long)(sqrt(1 + 8 * diff) - 1) / 2 + 1;
+
+
+        if (l + (max_length * (max_length - 1)) / 2 > r) {
+            max_length--;
+        }
+
+        cout << max_length << endl;
+    }
+    return 0;
+}
+
+
+
