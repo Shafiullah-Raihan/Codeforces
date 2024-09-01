@@ -1,0 +1,25 @@
+///https://codeforces.com/contest/1993/problem/A
+#include<bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+int main() {
+    optimize();
+    int t;cin>>t;
+    while(t--){
+        int n,a(0),b(0),c(0),d(0);
+        cin>>n;
+        string s;
+        cin>>s;
+        for (auto u:s){
+            if(u=='A') a++;
+            if(u=='B') b++;
+            if(u=='C') c++;
+            if(u=='D') d++;
+        }
+        cout<< (min(a,n)+ min(b,n)+ min(c,n)+min(d,n))<<endl;
+}
+return 0;
+}
