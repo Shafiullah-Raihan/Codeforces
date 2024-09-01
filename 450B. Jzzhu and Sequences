@@ -1,0 +1,31 @@
+///https://codeforces.com/contest/450/problem/B
+#include<bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+nt main() {
+    long long x, y, n;
+    cin >> x >> y >> n;
+    const int MOD = 1000000007;
+
+
+    long long f[6];
+    f[0] = x % MOD;
+    f[1] = y % MOD;
+    f[2] = (y - x) % MOD;
+    f[3] = (-x) % MOD;
+    f[4] = (-y) % MOD;
+    f[5] = (x - y) % MOD;
+
+
+    for (int i = 0; i < 6; i++) {
+        if (f[i] < 0) f[i] += MOD;
+    }
+
+
+    cout << f[(n - 1) % 6] << endl;
+
+    return 0;
+}
