@@ -1,0 +1,44 @@
+///https://codeforces.com/contest/215/problem/A
+#include<bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+int main()
+{
+    int n,m,mn(0);
+    cin>> n;
+    vector<int> arrn(n);
+    for(int i=0;i<n;i++) cin>> arrn[i];
+    cin>>m;
+    vector<int>arrm(m);
+    for(int i=0;i<m;i++) cin>> arrm[i];
+    vector<int>fnd;
+
+
+
+    int cnt=0;
+    for(int i=0;i<m;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            if(arrm[i]% arrn[j] == 0){
+               int p =  arrm[i]/arrn[j];
+               fnd.push_back(p);
+
+            }
+        }
+    }
+    auto ele = *max_element(fnd.begin(),fnd.end());
+    for(auto u:fnd){
+        if(u==ele){
+            cnt++;
+        }
+    }
+    cout<< cnt<<endl;
+
+    return 0;
+}
+
+
