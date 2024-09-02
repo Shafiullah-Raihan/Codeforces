@@ -1,0 +1,26 @@
+///https://codeforces.com/problemset/problem/1814/A
+#include<bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+int main ()
+{
+    optimize();
+    int t;cin>>t;
+    while(t--){
+        ll n,k;
+        cin>> n>>k;
+        if((k%2==0 && n%2==1)){
+            cout<< "NO"<< endl;
+        }
+        else {
+            cout<< "YES"<<endl;
+        }
+    }
+    return 0;
+}
+
+
