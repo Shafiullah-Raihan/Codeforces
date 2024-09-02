@@ -1,0 +1,34 @@
+///https://codeforces.com/problemset/problem/258/A
+
+#include<bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+int main() {
+    optimize();
+    string binary;
+    cin >> binary;
+    int len = binary.size();
+    string mxbinary = "";
+
+    bool found_zero = false;
+    for (int i = 0; i < len; ++i) {
+        if (binary[i] == '0' && !found_zero) {
+            found_zero = true;
+            continue;
+        }
+        mxbinary += binary[i];
+    }
+
+    if (!found_zero) {
+        mxbinary = binary.substr(0, len - 1);
+    }
+
+    cout << mxbinary << endl;
+    return 0;
+}
+
+
+
