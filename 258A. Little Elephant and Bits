@@ -13,15 +13,17 @@ int main() {
     int len = binary.size();
     string mxbinary = "";
 
+  
     bool found_zero = false;
     for (int i = 0; i < len; ++i) {
         if (binary[i] == '0' && !found_zero) {
             found_zero = true;
-            continue;
+            continue;  
         }
-        mxbinary += binary[i];
+        mxbinary += binary[i];  // Add the remaining characters
     }
 
+ 
     if (!found_zero) {
         mxbinary = binary.substr(0, len - 1);
     }
@@ -29,6 +31,4 @@ int main() {
     cout << mxbinary << endl;
     return 0;
 }
-
-
 
