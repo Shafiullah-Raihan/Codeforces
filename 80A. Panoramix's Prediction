@@ -1,0 +1,58 @@
+///https://codeforces.com/problemset/problem/80/A
+#include<bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+int arr[50];
+
+int prime(int m) {
+    int i, j, k = 1;
+    arr[0] = 2;
+
+    for(i = 3; i <= m; i++) {
+        bool isPrime = true;
+        for(j = 2; j * j <= i; j++) { 
+            if(i % j == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        if(isPrime) {
+            arr[k] = i;
+            k++;
+        }
+
+        if (k >= 50) break;
+    }
+
+
+    return k;
+}
+
+int main() {
+    optimize();
+    int m,n,ind;
+    cin >> n>>m;
+    int k = prime(m);
+
+    for(int i=0;i<k;i++){
+        if(arr[i] == m){
+            ind = i;
+        }
+    }
+        if(arr[ind] ==m && arr[ind-1]==n){
+            cout<< "YES"<<endl;
+
+
+        }
+        else{
+            cout<< "NO"<<endl;
+        }
+
+
+    return 0;
+}
+
+
