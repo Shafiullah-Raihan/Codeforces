@@ -1,0 +1,41 @@
+///https://codeforces.com/contest/1175/problem/A
+///Time limit exceed jogonno answer thik ache
+
+#include <bits/stdc++.h>
+using namespace std;
+
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+
+int main() {
+    optimize();
+    int t;cin>>t;
+    while(t--){
+        ll n,k,cnt=0;
+        cin>>n>>k;
+        while(1){
+            if(n%k==0){
+                cnt++;
+                n=n/k;
+            }
+            else if(n%k!=0){
+
+                int over = n%k;
+                n = n - over;
+                cnt = over+cnt;
+            }
+            if(n==0) break;
+
+        }
+        cout<<cnt<<endl;
+    }
+
+
+
+
+
+    return 0;
+}
