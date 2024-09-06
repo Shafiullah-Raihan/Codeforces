@@ -1,0 +1,45 @@
+///https://codeforces.com/problemset/problem/208/A
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+
+
+int main() {
+    optimize();
+
+    string s;
+
+    cin>>s;
+    string s1;
+
+    int len = s.size();
+
+    bool word = false;
+    for(int i=0;i<len;i++)
+    {
+        if(s[i]=='W' && s[i+1]=='U' && s[i+2] == 'B'){
+            i+=2;
+            if(word){                // shodo first e jate space na hoi tai ei condition dewa
+                s1.push_back(' ');
+            }
+
+        }
+        else{
+            s1.push_back(s[i]);
+            word = true;
+        }
+    }
+
+    cout<< s1<<endl;
+
+
+
+    return 0;
+}
