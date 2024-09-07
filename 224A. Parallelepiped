@@ -1,0 +1,24 @@
+///https://codeforces.com/problemset/problem/224/A
+
+#include <bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+
+int main() {
+optimize();
+	int x,y,z;
+	cin>>x>>y>>z;
+	int a=sqrt((x*y)/z);
+	int b=sqrt((x*z)/y);
+	int c=sqrt((y*z)/x);
+	int val=(a+b+c)*4;
+	cout<<val;
+
+
+	return 0;
+}
+
