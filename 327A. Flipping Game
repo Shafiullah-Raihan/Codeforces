@@ -1,0 +1,29 @@
+///https://codeforces.com/problemset/problem/327/A
+
+/// Modify and using  Kadane's Algorithm 
+
+
+#include <bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+vector<int> arr = {2, 3, -8, 7, -1, 2, 3};
+int main() {
+    optimize();
+
+
+    int res = arr[0], maxEvery = arr[0];
+    for(int i=1;i<arr.size();i++)
+    {
+        maxEvery = max(maxEvery+arr[i],arr[i]);
+        res = max(res,maxEvery);
+
+    }
+    cout<< res << endl;
+
+
+
+
+    return 0;
+}
