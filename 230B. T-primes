@@ -1,0 +1,45 @@
+///https://codeforces.com/problemset/problem/230/B
+/// the Sieve of Eratosthenes
+
+#include <bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+vector<bool> sieve(ll maxLimit) {
+    vector<bool> isPrime(maxLimit + 1, true);
+    isPrime[0] = isPrime[1] = false;
+    for (ll i = 2; i * i <= maxLimit; i++) {
+        if (isPrime[i]) {
+            for (ll j = i * i; j <= maxLimit; j += i) {
+                isPrime[j] = false;
+            }
+        }
+    }
+    return isPrime;
+}
+
+int main() {
+    optimize();
+
+    ll maxLimit = 1000000;
+    vector<bool> isPrime = sieve(maxLimit);
+
+    ll t;
+    cin >> t;
+    while (t--) {
+        ll a;
+        cin >> a;
+
+        ll root = sqrt(a);
+        if (root * root == a && isPrime[root]) {
+            cout << "YES" << endl;
+        } else {
+            cout << "NO" << endl;
+        }
+    }
+
+    return 0;
+}
