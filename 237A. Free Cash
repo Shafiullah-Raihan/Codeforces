@@ -1,0 +1,36 @@
+///https://codeforces.com/problemset/problem/237/A
+
+
+#include<bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+int arr[50];
+
+
+int main() {
+    optimize();
+
+    int n;cin>>n;
+    vector<pair<int,int>>v(n);
+    for(int i=0;i<n;i++){
+        cin>>v[i].first>>v[i].second;
+    }
+
+    int cnt = 1,mx =1;
+    for(int i=0;i<n-1;i++){
+        if(v[i].first == v[i+1].first && v[i].second == v[i+1].second){
+            cnt++;
+            mx = max(cnt,mx);
+        }
+
+        else {
+            cnt=1;
+        }
+    }
+
+    cout<<mx<<endl;
+    return 0;
+}
