@@ -1,0 +1,29 @@
+///https://codeforces.com/contest/2000/problem/A
+
+#include<bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+int main()
+{
+    optimize();
+
+    int tt;cin>>tt;
+    while(tt--){
+        string s;
+        cin>> s;
+        if(s.size()>=3 && s.substr(0,2) == "10" && s[2] != '0' && stoi(s.substr(2))>=2){
+            cout<< "YES"<<endl;
+        }
+        else {
+            cout<< "NO"<<endl;
+        }
+
+    }
+
+
+	return 0;
+}
