@@ -1,0 +1,49 @@
+///Dfs problem
+///https://codeforces.com/problemset/problem/445/B
+
+#include<bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define bismillah ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+const int mx=55;
+vector<int>arr[mx];
+bool bl[mx];
+void dfs(int n)
+{
+    bl[n] = true ;
+    for(auto u : arr[n]){
+        if(!bl[u]){
+            dfs(u);
+        }
+    }
+}
+
+int main() {
+    bismillah;
+
+    int n,m;
+    cin>>n>> m;
+
+
+    for(int i=0;i<m;i++){
+        int u,v;
+        cin>>u>>v;
+        arr[u].push_back(v);
+        arr[v].push_back(u);
+
+    }
+
+    int cnt=0;
+    for(int i=1;i<=n;i++){
+        if(bl[i]==0 ){
+            dfs(i);
+            cnt++;
+        }
+    }
+    cout<<(1ll << (n-cnt))<<endl;
+
+
+    return 0;
+}
+
