@@ -1,0 +1,48 @@
+///https://codeforces.com/problemset/problem/1598/A
+
+#include<bits/stdc++.h>
+using namespace std;
+#define endl "\n"
+#define ll long long
+#define bismillah ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+
+int main() {
+    bismillah;
+    int t;cin>>t;
+    while(t--){
+        int n;cin>>n;
+        string s1,s2;
+
+        cin>>s1>>s2;
+        if(s1.size() !=n || s2.size() !=n){
+            cout<< "NO"<<endl;
+            return 0;
+        }
+        bool ok = false;
+
+        for(int i=0;i<n;i++){
+            if(s1[i]== '1' && s2[i] == '1'){
+                ok = true;
+                break;
+            }
+        }
+        if(ok){
+            cout<< "NO"<<endl;
+        }
+        else{
+            cout<< "YES"<<endl;
+        }
+    }
+
+
+
+
+
+    return 0;
+}
+
+
+
+
