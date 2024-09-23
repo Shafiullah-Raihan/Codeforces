@@ -1,0 +1,27 @@
+///https://codeforces.com/problemset/problem/1539/B
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n, k;
+    cin >> n >> k;
+    string s;
+    cin >> s;
+
+    vector<long long> prefixSum(n + 1, 0);
+
+
+    for (int i = 1; i <= n; i++) {
+        prefixSum[i] = prefixSum[i - 1] + (s[i - 1] - 'a' + 1);
+    }
+
+    while (k--) {
+        int l, r;
+        cin >> l >> r;
+
+        cout << (prefixSum[r] - prefixSum[l - 1]) << endl;
+    }
+
+    return 0;
+}
