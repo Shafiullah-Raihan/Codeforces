@@ -1,0 +1,52 @@
+///https://codeforces.com/problemset/problem/1829/B
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef vector<int> vi;
+typedef pair<int, int> pii;
+typedef vector<vector<int>> vvi;
+
+#define fore(i, a, b) for (int i = a; i <= b; i++)
+#define forl(i, a, b) for (int i = a; i < b; i++)
+#define nl cout << endl
+#define F first
+#define S second
+#define pb push_back
+#define mp make_pair
+#define endl "\n"
+#define ll long long
+#define bismillah ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+
+int main() {
+
+    bismillah;
+
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+
+
+            int arr[n];
+            for (int i = 0; i < n; i++) {
+                cin >> arr[i];
+            }
+
+            int mx = 0, cnt = 0;
+            for (int i = 0; i < n; i++) {
+                if (arr[i] == 0) {
+                    cnt++;
+                } else {
+                    mx = max(mx, cnt);
+                    cnt = 0;
+                }
+            }
+            mx = max(mx, cnt);
+
+            cout << mx << endl;
+
+    }
+
+    return 0;
+}
