@@ -1,0 +1,32 @@
+///https://codeforces.com/problemset/problem/1883/B
+
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    
+
+    int t;
+    cin >> t;
+    while (t--) {
+        int  n, k;
+        cin >> n >> k;
+        string s;
+        cin >> s;
+
+        map<char, int> freq;
+        for (char c : s) {
+            ++freq[c]; 
+        }
+
+        int odd_count = 0;
+        for (auto &entry : freq) {
+            if (entry.second % 2 == 1) {
+                ++odd_count;
+            }
+        }
+
+        cout << (odd_count <= k + 1 ? "YES" : "NO") << endl;
+    }
+
+    return 0;
+}
