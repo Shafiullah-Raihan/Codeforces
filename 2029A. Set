@@ -1,0 +1,23 @@
+
+
+///https://codeforces.com/contest/2029/problem/A
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int T;
+    cin>> T;
+    while(T--){
+        int left,right,k;
+        cin>>left>>right>>k;
+        int out = max(((right/k)-left +1),0);
+        cout<<out<<endl;
+    }
+
+}
+
+
+
