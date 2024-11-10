@@ -1,0 +1,50 @@
+///https://codeforces.com/contest/2028/problem/A
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool dest(int x1,int y1,int x,int y,string s,int n)
+
+{
+    bool flag = false;
+    for(int i=0;i<100010;i++){
+
+        if(s[i%n] == 'N') y1 +=1;
+
+        if(s[i%n] == 'E') x1+=1;
+        if(s[i%n] == 'S') y1-=1;
+        if(s[i%n] == 'W') x1-=1;
+
+        if(x1== x && y1 == y) {
+        flag = true;
+          break;
+
+        }
+    }
+    return flag;
+
+}
+
+int main() {
+
+    int T;cin>>T;
+    while(T--){
+
+        int n , x, y;
+        cin>>n>>x>>y;
+        string s;
+        cin>>s;
+        if(dest(0,0,x,y,s,n)){
+            cout<< "YES"<<endl;
+        }
+        else{
+            cout<< "NO"<<endl;
+        }
+
+
+
+    }
+
+
+    return 0;
+}
