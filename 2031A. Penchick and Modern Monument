@@ -1,0 +1,38 @@
+///   ***   ---   |||         ALLAHU AKBAR        |||   ---   ***   ///
+
+
+///https://codeforces.com/contest/2031/problem/A
+#include<bits/stdc++.h>
+using namespace std;
+
+#define bismillah ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+
+
+
+int main()
+{
+    bismillah;
+    int T;cin>>T;
+    while(T--)
+    {
+        int n;cin>>n;
+        vector<int>v(n);
+        for(int i=0;i<n;i++){
+            cin>>v[i];
+        }
+        vector<int>freq(10010,0);
+        for(int i=0;i<n;i++){
+            freq[v[i]] ++;
+        }
+        int cnt = *max_element(all(freq));
+        cout<<n-cnt<<endl;
+
+
+
+
+    }
+    return 0;
+}
+
