@@ -1,0 +1,22 @@
+///https://codeforces.com/problemset/problem/579/A
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+#define bismillah ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+
+
+int main()
+{
+    bismillah;
+
+    ll n;cin>>n;
+    cout<<__builtin_popcount(n)<<endl;
+
+    return 0;
+}
+
