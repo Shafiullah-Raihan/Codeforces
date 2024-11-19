@@ -1,0 +1,44 @@
+///https://codeforces.com/problemset/problem/1791/D
+
+#include<bits/stdc++.h>
+using namespace std;
+#define bismillah ios_base::sync_with_stdio(false);cin.tie(NULL);
+
+int main() {
+
+    bismillah;
+    int tc;
+    cin >> tc;
+    while(tc--) {
+        int n;
+        cin >> n;
+        string s;
+        cin >> s;
+
+        unordered_map<char, int> m, mp;
+
+
+        for (int i = 0; i < n; i++) {
+            mp[s[i]]++;
+        }
+
+        int mx = 0;
+
+
+        for (int i = 0; i < n; i++) {
+            m[s[i]]++;
+            mp[s[i]]--;
+            if (mp[s[i]] == 0) {
+                mp.erase(s[i]);
+            }
+
+            if (m.size() + mp.size() > mx) {
+                mx = m.size() + mp.size();
+
+            }
+        }
+
+        cout << mx << endl;  // Output the result for this test case
+    }
+    return 0;
+}
