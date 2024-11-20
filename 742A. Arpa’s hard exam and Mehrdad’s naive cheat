@@ -8,11 +8,9 @@ using namespace std;
 int main() {
     bismillah;
 
-    int n;
-    cin>>n;
-    int ans = pow(8,n);
-    string s = to_string (ans);
-    cout<<s[s.size()-1]<<endl;
+    int n; 
+    cin >> n;
+    cout << (int) pow(8, (n-1)%4+1) % 10;
 
     return 0;
 }
