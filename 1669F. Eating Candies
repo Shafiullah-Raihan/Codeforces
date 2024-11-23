@@ -1,0 +1,54 @@
+///https://codeforces.com/problemset/problem/1669/F
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+
+#define endl '\n'
+#define bismillah ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+int main() {
+    bismillah;
+
+    int T; cin >> T; 
+    while (T--) {
+
+        int n;cin>>n;
+
+        vector<int>v(n);
+
+        for(int i=0;i<n;i++) cin>>v[i];
+
+
+        int left =0,right=n-1,ans=0,leftSum = v[left], rightSum = v[right];
+
+        while(left<right)
+        {
+            if(leftSum<rightSum){
+                left++;
+                leftSum += v[left];
+
+            }
+            else if(leftSum>rightSum){
+                right--;
+                rightSum += v[right];
+
+            }
+            else{
+                ans = max(ans,left+(n+1-right));
+                left++;
+                leftSum += v[left];
+
+            }
+
+        }
+        cout<<ans<<endl;
+
+
+
+    }
+
+    return 0;
+}
