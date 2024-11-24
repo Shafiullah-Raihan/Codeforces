@@ -1,0 +1,33 @@
+///https://codeforces.com/problemset/problem/1772/C
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main()	{
+
+	int T;cin>>T;
+	while(T--)
+    {
+        int n,k;
+        cin>>k>>n;
+        int a =1,diff=1;
+        for(int i=1;i<=k;i++)
+        {
+            cout<< a<< " ";
+            if(n-(a+diff) >= (k-(i+1))){
+                a += diff;
+                diff++;
+            }
+            else{
+                a++;
+            }
+        }
+        cout<<endl;
+
+
+
+    }
+
+    return 0;
+}
