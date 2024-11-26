@@ -1,0 +1,73 @@
+
+
+///https://codeforces.com/problemset/problem/1859/B
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef vector<vi> vvi;
+typedef vector<vl> vvl;
+typedef pair<int,int> pii;
+typedef pair<double, double> pdd;
+typedef pair<ll, ll> pll;
+typedef vector<pii> vii;
+typedef vector<pll> vll;
+typedef double dl;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+#define sz(x) (int)x.size()
+#define nl cout<<endl;
+
+
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define bismillah ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+
+int main()
+{
+    bismillah;
+
+    int T;cin>>T;
+    while(T--)
+    {
+
+       int n;cin>>n;
+       ll min1 =LLONG_MAX,min2=LLONG_MAX, sum=0;
+       for(int i=0;i<n;i++)
+       {
+           int m;cin>>m;
+           vector<ll>v(m);
+           for(int j=0;j<m;j++){
+            cin>>v[j];
+           }
+           sort(all(v));
+
+        min1 = min(v[0], min1);
+        min2 = min(v[1], min2);
+
+        sum += v[1];
+       }
+        cout<< sum - min2+ min1<<endl;
+
+
+
+
+    }
+
+
+    return 0;
+}
+
