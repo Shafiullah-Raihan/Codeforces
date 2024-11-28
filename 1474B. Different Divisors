@@ -1,0 +1,57 @@
+
+///https://codeforces.com/problemset/problem/1474/B
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+#define bismillah ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+
+const int mx = 1e6; 
+bool prime[mx + 1];
+
+
+void sieve() {
+    fill(prime, prime + mx + 1, true);
+    prime[0] = prime[1] = false; // 0 and 1 are not prime
+
+    for (int i = 2; i * i <= mx; i++) {
+        if (prime[i]) {
+            for (int j = i * i; j <= mx; j += i) {
+                prime[j] = false; 
+            }
+        }
+    }
+}
+
+
+int nextPrime(int n) {
+    while (!prime[n]) {
+        n++;
+    }
+    return n;
+}
+
+int main() {
+    bismillah;
+
+    sieve(); 
+
+    int T;
+    cin >> T;
+    while (T--) {
+        int d;
+        cin >> d;
+
+      
+        int p1 = nextPrime(1 + d);
+
+  
+        int p2 = nextPrime(p1 + d);
+
+   
+        cout << 1LL * p1 * p2 << endl;
+    }
+
+    return 0;
+}
