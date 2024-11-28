@@ -1,0 +1,65 @@
+
+
+///https://codeforces.com/problemset/problem/1155/A
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef vector<vi> vvi;
+typedef vector<vl> vvl;
+typedef pair<int,int> pii;
+typedef pair<double, double> pdd;
+typedef pair<ll, ll> pll;
+typedef vector<pii> vii;
+typedef vector<pll> vll;
+typedef double dl;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+#define sz(x) (int)x.size()
+#define nl cout<<endl
+
+
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define bismillah ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+
+
+int main()
+{
+    bismillah;
+
+    int n;cin>>n;string s;cin>>s;
+    int left =-1 , right =-1;
+    for(int i=1;i<n;i++)
+    {
+        if(s[i]<s[i-1]){
+            left= i-1+1,right =i+1;
+            break;
+        }
+    }
+    if(left==-1 ||  right == -1){
+        cout<<"NO"<<endl;
+
+    }
+    else
+    {
+        cout<< "YES"<<endl;
+        cout<< left<< " "<<right<<endl;
+    }
+
+
+    return 0;
+}
+
