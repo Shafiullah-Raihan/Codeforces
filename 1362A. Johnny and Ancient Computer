@@ -1,0 +1,66 @@
+///https://codeforces.com/problemset/problem/1362/A
+
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<ll> vl;
+
+#define bismillah ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+
+int main() {
+    bismillah;
+    int T;
+    cin >> T;
+    while (T--) {
+        ll a, b, cnt = 0;
+        cin >> a >> b;
+
+        
+        if (a % b != 0 && b % a != 0) {
+            cout << -1 << endl;
+            continue;
+        }
+
+        
+        ll gcd = __gcd(a, b);
+        a /= gcd;
+        b /= gcd;
+
+      
+        auto is_power_of_two = [](ll x) {
+            return (x > 0) && ((x & (x - 1)) == 0);
+        };
+
+        if (!is_power_of_two(a) || !is_power_of_two(b)) {
+            cout << -1 << endl;
+            continue;
+        }
+
+       
+        while (a > b) {
+            if (a % 8 == 0 && a / 8 >= b) a /= 8;
+            else if (a % 4 == 0 && a / 4 >= b) a /= 4;
+            else if (a % 2 == 0 && a / 2 >= b) a /= 2;
+            else break;
+            cnt++;
+        }
+
+      
+        while (a < b) {
+            if (b % 8 == 0 && b / 8 >= a) b /= 8;
+            else if (b % 4 == 0 && b / 4 >= a) b /= 4;
+            else if (b % 2 == 0 && b / 2 >= a) b /= 2;
+            else break;
+            cnt++;
+        }
+
+   
+        if (a != b) {
+            cout << -1 << endl;
+        } else {
+            cout << cnt << endl;
+        }
+    }
+    return 0;
+}
