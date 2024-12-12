@@ -1,0 +1,28 @@
+///https://leetcode.com/problems/word-break/description/?envType=study-plan-v2&envId=dynamic-programming
+
+class Solution {
+public:
+    
+
+    bool check(int i,string& s,unordered_set<string>& st,vector<int>& dp )
+    {
+        if(i == s.size()) return true;
+        if(dp[i] != -1) {
+            return dp[i];
+        }
+        string temp = "";
+        for(int j = i;j<s.size();j++){
+            temp+= s[j];
+            if(st.find(temp) !=  st.end() && check(j+1,s,st,dp)){
+                return dp[j] = true;
+            }
+        }
+        return dp[i] = false;
+    }
+
+    bool wordBreak(string s, vector<string>& wordDict) {
+        unordered_set<string> st(wordDict.begin(), wordDict.end());
+        vector<int> dp(s.size(), -1); 
+        return check(0, s, st, dp);
+    }
+};
