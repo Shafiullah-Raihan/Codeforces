@@ -1,0 +1,25 @@
+///https://codeforces.com/problemset/problem/2047/A
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int t,n,a[100];
+set<int>ss;
+int main()
+{
+	for(int i=1;i<=10000;i+=2)ss.insert(i*i);
+	cin>>t;
+	while(t--)
+	{
+		cin>>n;
+		int s=0,cnt=0;
+		for(int i=1;i<=n;i++)
+		{
+			cin>>a[i];
+			s+=a[i];
+			if(ss.find(s)!=ss.end())cnt++;
+		}
+		cout<<cnt<<endl;
+	}
+	return 0;
+}
