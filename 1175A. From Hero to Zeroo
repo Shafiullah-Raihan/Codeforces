@@ -1,0 +1,26 @@
+///https://codeforces.com/contest/1175/problem/A
+//Accepted
+#include<bits/stdc++.h>
+using namespace std;
+using ll=long long;
+int main(){
+	ios::sync_with_stdio(),cin.tie(),cout.tie();
+	int t;
+	cin>>t;
+	while(t--){
+		ll cnt=0;
+		ll n,k;
+		cin>>n>>k;
+		while(n!=0){
+			if(n<k){
+				cnt+=n;
+				break;
+			}
+			cnt+=n%k;
+			cnt++;
+			n/=k;
+		}
+		cout<<cnt<<'\n';
+	}
+	return 0;
+}
