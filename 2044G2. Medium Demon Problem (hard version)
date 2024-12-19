@@ -1,0 +1,41 @@
+///https://codeforces.com/contest/2044/problem/G2
+
+#include<bits/stdc++.h>
+using namespace std;
+int t,n;
+vector<int>a,id,dp;
+void solve(){
+	cin>>n;
+	a=vector<int>(n+1);
+	id=vector<int>(n+1);
+	dp=vector<int>(n+1,1);
+	for(int i=1;i<=n;i++){
+		cin>>a[i];
+		id[a[i]]++;
+	}
+	queue<int>q;
+	for(int i=1;i<=n;i++){
+		if(id[i]==0){
+			q.push(i);
+	    }
+	}
+	int ans=2;
+	while(!q.empty()){
+		int u=q.front();
+		q.pop();
+		int v=a[u];
+		dp[v]+=dp[u];
+		ans=max(ans,dp[u]+2);
+		id[v]--;
+		if(id[v]==0)q.push(v);
+	}
+	cout<<ans<<"\n";
+	return;
+}
+int main(){
+	cin>>t;
+	while(t--){
+		solve();
+	}
+	return 0;
+}
