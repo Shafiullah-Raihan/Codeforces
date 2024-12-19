@@ -1,0 +1,89 @@
+///https://codeforces.com/contest/2044/problem/G1
+
+
+///   ***   ---   ||         ALLAHU AKBAR        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+#define PB push_back
+#define all(a) (a).begin(),(a).end()
+#define endl '\n'
+#define bismillah ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+
+const int MOD = 1000000007;
+const ll infLL = 9000000000000000000;
+
+int main() {
+    bismillah;
+    int T;
+    cin >> T;
+
+    while (T--) {
+        int sze;
+        cin >> sze;
+
+        vi arr(sze + 1);
+        for (int i = 1; i <= sze; ++i) {
+            cin >> arr[i];
+        }
+
+        const int NOT_VISITED = 0, IN_PROGRESS = 1, FINISHED = 2;
+
+        vi visitStatus(sze + 1, NOT_VISITED);
+        vi nodeDistances(sze + 1, -1);
+
+        for (int node = 1; node <= sze; ++node) {
+            if (visitStatus[node] == NOT_VISITED) {
+                vi traversalPath;
+                int current = node;
+
+                while (visitStatus[current] == NOT_VISITED) {
+                    visitStatus[current] = IN_PROGRESS;
+                    traversalPath.PB(current);
+                    current = arr[current];
+                }
+
+                if (visitStatus[current] == IN_PROGRESS) {
+                    auto cycleStart = find(all(traversalPath), current);
+                    for (auto it = cycleStart; it != traversalPath.end(); ++it) {
+                        nodeDistances[*it] = 0;
+                    }
+                }
+
+                for (int elem : traversalPath) {
+                    visitStatus[elem] = FINISHED;
+                }
+            }
+        }
+
+        vector<vi> reverseConnections(sze + 1);
+        for (int src = 1; src <= sze; ++src) {
+            reverseConnections[arr[src]].PB(src);
+        }
+
+        queue<int> bfsQueue;
+        for (int node = 1; node <= sze; ++node) {
+            if (nodeDistances[node] == 0) {
+                bfsQueue.push(node);
+            }
+        }
+
+        while (!bfsQueue.empty()) {
+            int currentNode = bfsQueue.front();
+            bfsQueue.pop();
+
+            for (int predecessor : reverseConnections[currentNode]) {
+                if (nodeDistances[predecessor] < 0) {
+                    nodeDistances[predecessor] = nodeDistances[currentNode] + 1;
+                    bfsQueue.push(predecessor);
+                }
+            }
+        }
+
+        cout << *max_element(all(nodeDistances)) + 2 << endl;
+    }
+    return 0;
+}
