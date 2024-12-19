@@ -1,0 +1,109 @@
+///https://codeforces.com/problemset/problem/2040/C
+
+#include <bits/stdc++.h>
+using namespace std;
+
+const int MAX_POWER = 40;
+const long long INFINITY_VAL = 1e15;
+
+struct Task {
+    enum TaskType { RANGE_TASK, OUTPUT_TASK } taskType;
+    long long start, end, targetRank;
+    int value;
+
+    Task(long long start_, long long end_, long long targetRank_)
+        : taskType(RANGE_TASK), start(start_), end(end_), targetRank(targetRank_), value(0) {}
+    Task(int value_)
+        : taskType(OUTPUT_TASK), start(0), end(0), targetRank(0), value(value_) {}
+};
+
+long long computeHalfIntervalCount(long long intervalLength, const vector<long long>& powersOfTwo) {
+    if (intervalLength <= 1)
+        return 1;
+    if ((intervalLength - 1) <= MAX_POWER)
+        return powersOfTwo[intervalLength - 1];
+    return INFINITY_VAL;
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    vector<long long> powersOfTwo(MAX_POWER + 1, 1);
+    for (int i = 1; i <= MAX_POWER; ++i) {
+        powersOfTwo[i] = powersOfTwo[i - 1] * 2;
+    }
+
+    long long testCases;
+    cin >> testCases;
+
+    string finalOutput;
+
+    while (testCases--) {
+        long long arraySize, targetRank;
+        cin >> arraySize >> targetRank;
+
+        if (arraySize == 1) {
+            finalOutput += (targetRank == 1) ? "1\n" : "-1\n";
+            continue;
+        }
+
+        long long maxPossibleRank = computeHalfIntervalCount(arraySize, powersOfTwo);
+        if (targetRank > maxPossibleRank) {
+            finalOutput += "-1\n";
+            continue;
+        }
+
+        vector<Task> tasksStack;
+        tasksStack.emplace_back(Task(1, arraySize, targetRank));
+        vector<int> results;
+
+        while (!tasksStack.empty()) {
+            Task currentTask = tasksStack.back();
+            tasksStack.pop_back();
+
+            if (currentTask.taskType == Task::OUTPUT_TASK) {
+                results.push_back(currentTask.value);
+            } else {
+                long long left = currentTask.start;
+                long long right = currentTask.end;
+                long long remainingRank = currentTask.targetRank;
+
+                while (true) {
+                    if (left == right) {
+                        results.push_back(static_cast<int>(left));
+                        break;
+                    }
+
+                    long long intervalLength = right - left;
+                    long long halfCount = computeHalfIntervalCount(intervalLength, powersOfTwo);
+
+                    if (remainingRank <= halfCount) {
+                        results.push_back(static_cast<int>(left));
+                        left += 1;
+                    } else {
+                        tasksStack.emplace_back(static_cast<int>(left));
+                        left += 1;
+                        remainingRank -= halfCount;
+                        continue;
+                    }
+
+                    if (left > right) break;
+
+                    if (left == right) {
+                        results.push_back(static_cast<int>(left));
+                        break;
+                    }
+                }
+            }
+        }
+
+        for (int num : results) {
+            finalOutput += to_string(num) + " ";
+        }
+        finalOutput += "\n";
+    }
+
+    cout << finalOutput;
+    return 0;
+}
