@@ -1,0 +1,106 @@
+///https://codeforces.com/contest/2044/problem/H
+
+///   ***   ---   ||         ALLAHU AKBAR        |||   ---   ***   ///
+
+#include<bits/stdc++.h>
+using namespace std;
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef vector<vi> vvi;
+typedef vector<vl> vvl;
+typedef pair<int,int> pii;
+typedef pair<double, double> pdd;
+typedef pair<ll, ll> pll;
+typedef vector<pii> vii;
+typedef vector<pll> vll;
+typedef double dl;
+
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+#define sz(x) (int)x.size()
+#define nl cout<<endl
+
+const double PI = acos(-1);
+const double eps = 1e-9;
+const int inf = 2000000000;
+const ll infLL = 9000000000000000000;
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a))
+#define sqr(a) ((a) * (a))
+
+#define bismillah ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define fraction() cout.unsetf(ios::floatfield); cout.precision(10); cout.setf(ios::fixed,ios::floatfield);
+#define file() freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+int dx[] = { 0, 0, +1, -1, -1, +1, -1, +1 };
+int dy[] = { +1, -1, 0, 0, -1, +1, +1, -1 };
+
+int main() {
+    bismillah;
+
+    int T;
+    cin >> T;
+
+    while (T--) {
+        int matrixSize, queryCount;
+        cin >> matrixSize >> queryCount;
+
+        vector<vector<ll>> matrix(matrixSize, vector<ll>(matrixSize, 0));
+        for (int row = 0; row < matrixSize; row++) {
+            for (int col = 0; col < matrixSize; col++) {
+                cin >> matrix[row][col];
+            }
+        }
+
+        vector<vector<ll>> prefixSum(matrixSize + 1, vector<ll>(matrixSize + 1, 0));
+        vector<vector<ll>> rowWeightedSum(matrixSize + 1, vector<ll>(matrixSize + 1, 0));
+        vector<vector<ll>> colWeightedSum(matrixSize + 1, vector<ll>(matrixSize + 1, 0));
+
+        for (int row = 1; row <= matrixSize; row++) {
+            ll currentRowSum = 0;
+            ll currentRowWeightedSum = 0;
+            ll currentColWeightedSum = 0;
+            for (int col = 1; col <= matrixSize; col++) {
+                ll value = matrix[row - 1][col - 1];
+                currentRowSum += value;
+                currentRowWeightedSum += value * row;
+                currentColWeightedSum += value * col;
+
+                prefixSum[row][col] = prefixSum[row - 1][col] + currentRowSum;
+                rowWeightedSum[row][col] = rowWeightedSum[row - 1][col] + currentRowWeightedSum;
+                colWeightedSum[row][col] = colWeightedSum[row - 1][col] + currentColWeightedSum;
+            }
+        }
+
+        string outputBuffer;
+        outputBuffer.reserve(queryCount * 20);
+        for (int i = 0; i < queryCount; i++) {
+            int x1, y1, x2, y2;
+            cin >> x1 >> y1 >> x2 >> y2;
+
+            ll subMatrixSum = prefixSum[x2][y2] - prefixSum[x1 - 1][y2] - prefixSum[x2][y1 - 1] + prefixSum[x1 - 1][y1 - 1];
+            ll subRowWeightedSum = rowWeightedSum[x2][y2] - rowWeightedSum[x1 - 1][y2] - rowWeightedSum[x2][y1 - 1] + rowWeightedSum[x1 - 1][y1 - 1];
+            ll subColWeightedSum = colWeightedSum[x2][y2] - colWeightedSum[x1 - 1][y2] - colWeightedSum[x2][y1 - 1] + colWeightedSum[x1 - 1][y1 - 1];
+
+            int width = y2 - y1 + 1;
+            ll result = (ll)width * (subRowWeightedSum - (ll)x1 * subMatrixSum) + (subColWeightedSum - (ll)(y1 - 1) * subMatrixSum);
+
+            outputBuffer += to_string(result) + ' ';
+        }
+
+        cout << outputBuffer << '\n';
+    }
+
+    return 0;
+}
