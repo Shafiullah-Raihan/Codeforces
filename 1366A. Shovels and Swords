@@ -1,0 +1,20 @@
+///https://codeforces.com/problemset/problem/1366/A
+
+
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        long long a, b;
+        cin >> a >> b;
+
+        
+        long long max_tools = min((a + b) / 3, min(a, b));
+        cout << max_tools << endl;
+    }
+    return 0;
+}
