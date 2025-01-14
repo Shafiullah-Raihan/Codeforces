@@ -1,0 +1,34 @@
+///https://codeforces.com/problemset/problem/1335/C
+
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main() {
+    int t;
+    cin >> t;
+    unordered_map<int,int>mp;
+    while (t--) {
+            mp.clear();
+            int mx=0;
+            int n;cin>>n;
+            for(int i=0;i<n;i++){
+                int a;cin>>a;
+                mp[a]++;
+                mx = max(mx,mp[a]);
+            }
+
+            if(mx<mp.size()){
+                cout<< mx<<endl;
+            }
+            else if(mx == mp.size()){
+                cout<< mx-1<<endl;
+            }
+            else{
+                int ans = mp.size();
+                cout<<ans<<endl;
+            }
+
+    }
+    return 0;
+}
