@@ -3,6 +3,10 @@
 ///https://codeforces.com/problemset/problem/1883/C
 
 
+///   ***   ---         ||    ALLAHU AKBAR        |||   ---   ***   ///
+
+
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -26,44 +30,69 @@ typedef double dl;
 #define all(a) (a).begin(),(a).end()
 #define rall(a) (a).rbegin(),(a).rend()
 #define sz(x) (int)x.size()
-#define nl cout<<endl;
+#define nl cout<<endl
 
-
+const double PI = acos(-1);
+const double eps = 1e-9;
+const int inf = 2000000000;
+const ll infLL = 9000000000000000000;
+#define MOD 1000000007
 
 #define mem(a,b) memset(a, b, sizeof(a) )
 #define sqr(a) ((a) * (a))
 
 #define bismillah ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define fraction() cout.unsetf(ios::floatfield); cout.precision(10); cout.setf(ios::fixed,ios::floatfield);
+#define file() freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
+
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+
+int dx[] = { 0, 0, +1, -1, -1,  +1, -1, +1 };
+int dy[] = { +1, -1, 0, 0, -1, +1, +1, -1 };
+
+
+
+void raihan()
+{
+
+    ll n, k;
+    cin >> n >> k;
+
+    vl arr(n);
+    for (ll i = 0; i < n; i++) cin >> arr[i];
+
+    ll mn = INT_MAX;
+    ll evenCount = 0;
+
+    for (ll i = 0; i < n; i++) {
+        if (arr[i] % k == 0) {
+            cout << 0 << endl;
+            return;
+        }
+        mn = min(mn, k - (arr[i] % k));
+        if (arr[i] % 2 == 0) evenCount++;
+    }
+
+    if (k == 4) mn = min(mn, 2 - min(2LL, evenCount));
+
+    cout << mn << endl;
+
+}
+
 
 
 
 int main()
 {
     bismillah;
-
-    int T;cin>>T;
+    int T;
+    cin>>T;
     while(T--)
     {
-        int n,k;cin>>n>>k;
-        int even =0,ans = k;
-        for(int i=0;i<n;i++)
-        {
-            int a;cin>>a;
-            if(a%2==0) even++;
-            if(a%k ==0) ans=0;
-            ans = min(ans,k-a%k);
-        }
-        if(k==4)
-        {
-            if(even >=2) ans=0;
-            else if(even==1){
-                ans = min(ans,1);
-            }
-            else{
-                ans = min(ans,2);
-            }
-        }
-        cout<<ans<<endl;
+        raihan();
     }
 
 
