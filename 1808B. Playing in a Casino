@@ -1,0 +1,103 @@
+///https://codeforces.com/problemset/problem/1808/B
+
+///   ***   ---         ||    ALLAHU AKBAR        |||   ---   ***   ///
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef vector<vi> vvi;
+typedef vector<vl> vvl;
+typedef pair<int,int> pii;
+typedef pair<double, double> pdd;
+typedef pair<ll, ll> pll;
+typedef vector<pii> vii;
+typedef vector<pll> vll;
+typedef double dl;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+#define sz(x) (int)x.size()
+#define nl cout<<endl
+#define fr(i,a,n) for(ll i=a;i<n;i++)
+
+const double PI = acos(-1);
+const double eps = 1e-9;
+const int inf = 2000000000;
+const ll infLL = 9000000000000000000;
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define bismillah ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define fraction() cout.unsetf(ios::floatfield); cout.precision(10); cout.setf(ios::fixed,ios::floatfield);
+#define file() freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
+
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+
+int dx[] = { 0, 0, +1, -1, -1,  +1, -1, +1 };
+int dy[] = { +1, -1, 0, 0, -1, +1, +1, -1 };
+
+
+
+void raihan()
+{
+
+    ll n,m;cin>>n>>m;
+    vvl arr(m,vl(n));
+    for(ll i=0;i<n;i++)
+    {
+        for(ll j=0;j<m;j++)
+        {
+            cin>>arr[j][i];
+        }
+    }
+    ll ans=0;
+    for(ll i=0;i<m;i++)
+    {
+        sort(all(arr[i]));
+        vl suffix(n,0);
+        suffix[n-1]= arr[i][n-1];
+        for( ll j=n-2;j>=0;j--)
+        {
+            suffix[j] = suffix[j+1]+arr[i][j];
+        }
+        for(ll j=0;j<n-1;j++)
+        {
+            ans += suffix[j+1] - (n-1-j)*arr[i][j];
+        }
+    }
+    cout<<ans<<endl;
+
+}
+
+
+
+
+int main()
+{
+    bismillah;
+    ll T;
+    cin>>T;
+    for(ll tt=1;tt<=T;tt++)
+    {
+        raihan();
+    }
+
+
+    return 0;
+}
+
