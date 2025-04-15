@@ -1,0 +1,193 @@
+///https://codeforces.com/problemset/problem/1805/D
+
+
+///   ***   ---   |||         ALLAHU AKBAR        |||   ---   ***   ///
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+typedef long long ll;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef vector<vi> vvi;
+typedef vector<vl> vvl;
+typedef pair<int,int> pii;
+typedef pair<double, double> pdd;
+typedef pair<ll, ll> pll;
+typedef vector<pii> vii;
+typedef vector<pll> vll;
+typedef double dl;
+
+#define endl '\n'
+#define PB push_back
+#define F first
+#define S second
+#define all(a) (a).begin(),(a).end()
+#define rall(a) (a).rbegin(),(a).rend()
+#define sz(x) (int)x.size()
+#define nl cout<<endl
+#define fr(i,a,n) for(ll i=a;i<n;i++)
+
+const double PI = acos(-1);
+const double eps = 1e-9;
+const int inf = 2000000000;
+const ll infLL = 9000000000000000000;
+#define MOD 1000000007
+
+#define mem(a,b) memset(a, b, sizeof(a) )
+#define sqr(a) ((a) * (a))
+
+#define bismillah ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define fraction() cout.unsetf(ios::floatfield); cout.precision(10); cout.setf(ios::fixed,ios::floatfield);
+#define file() freopen("input.txt","r",stdin);freopen("output.txt","w",stdout);
+
+
+ll gcd ( ll a, ll b ) { return __gcd ( a, b ); }
+ll lcm ( ll a, ll b ) { return a * ( b / gcd ( a, b ) ); }
+
+
+int dx[] = { 0, 0, +1, -1, -1,  +1, -1, +1 };
+int dy[] = { +1, -1, 0, 0, -1, +1, +1, -1 };
+const ll mx =1e6+123;
+vvl adj(mx);vector<bool>vis;
+
+
+class DSU
+{
+public:
+    vl parents,rnk;
+    DSU(ll n)
+    {
+        parents.resize(n),rnk.assign(n,1);
+        iota(all(parents),0LL);
+    }
+    ll find(ll x)
+    {
+        if(parents[x] ==x) return x;
+        return parents[x] = find(parents[x]);
+    }
+    bool connect(ll x,ll y)
+    {
+        ll rootX = find(x), rootY = find(y);
+        if(rootX == rootY) return false;
+        if(rnk[rootX]<rnk[rootY])
+        {
+            parents[rootX] = rootY;rnk[rootY] += rnk[rootX];
+        }
+        else if(rnk[rootX]>rnk[rootY])
+        {
+            parents[rootY] = rootX;rnk[rootX] += rnk[rootY];
+        }
+        else{
+            parents[rootY] = rootX;rnk[rootX] += rnk[rootY];
+        }
+        return true;
+
+    }
+
+};
+
+ll bfs(ll src,vl& dist)
+{
+
+    vis.assign(dist.size(),false);
+    queue<ll>q;
+    q.push(src);
+    dist[src]=0;
+    ll longestNode;
+    while(!q.empty())
+    {
+        ll frnt = q.front();q.pop();
+        vis[frnt] = true;
+        longestNode = frnt;
+        for(auto child: adj[frnt])
+        {
+            if(!vis[child])
+            {
+                dist[child] = 1 + dist[frnt];
+                q.push(child);
+            }
+        }
+
+    }
+    return longestNode;
+}
+
+void raihan()
+{
+
+
+    ll n;cin>>n;
+    for(ll i=1;i<=n;i++) adj[i].clear();
+    for(ll i=0;i<n-1;i++)
+    {
+        ll u,v;cin>>u>>v;
+        adj[u].PB(v);adj[v].PB(u);
+    }
+    vl temp(n+1);
+    ll x = bfs(1,temp);
+    vl distX(n+1);
+    ll y = bfs(x,distX);
+    vl distY(n+1);
+    bfs(y,distY);
+
+
+    vvl nodeByDistX(n+1),nodeByDistY(n+1);
+    for(ll i=1;i<=n;i++)
+    {
+        nodeByDistX[distX[i]].push_back(i);
+        nodeByDistY[distY[i]].push_back(i);
+
+    }
+
+
+
+    DSU dsu(n+1);
+    vl ans(n+1);
+    ll component=n;
+    for(ll i=n;i>=1;i--)
+    {
+        for(auto child:nodeByDistX[i])
+        {
+            if(dsu.connect(x,child))
+            {
+                component--;
+            }
+        }
+        for(auto child:nodeByDistY[i])
+        {
+            if(dsu.connect(y,child))
+            {
+                component--;
+            }
+        }
+
+        ans[i] = component;
+    }
+    for(ll i=1;i<=n;i++)
+    {
+        cout<<ans[i]<< " ";
+    }
+    nl;
+
+
+
+
+
+}
+
+
+
+int main()
+{
+    bismillah;
+    raihan();
+
+
+
+    return 0;
+}
+
